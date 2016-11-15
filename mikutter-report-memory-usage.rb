@@ -21,7 +21,7 @@ Plugin.create :"mikutter-report-memory-usage" do
   end
 
   on_boot do |service|
-    UserConfig[:"report-memory-usage-interval"] ||= 10
+    UserConfig[:"report-memory-usage-interval"] ||= 300
     show_memory_usage
   end
 
