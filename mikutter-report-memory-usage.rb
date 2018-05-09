@@ -27,7 +27,7 @@ Plugin.create :"mikutter-report-memory-usage" do
 
   settings "メモリ使用量報告" do
     begin
-      adjustment("メモリ使用量報告間隔(s)", :"report-memory-usage-interval", 1, 3600)
+      adjustment("メモリ使用量報告間隔(sec)", :"report-memory-usage-interval", 1, 3600)
     rescue => e
       puts e
       puts e.backtrace
