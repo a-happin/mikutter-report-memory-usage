@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-Plugin.create :"mikutter-report-memory-usage" do
+Plugin.create :"mikutter_report_memory_usage" do
   def report_memory_usage ()
     usage = `ps -o rss= -p #{$$}`.to_i
     if usage < 1024 then
@@ -15,19 +15,19 @@ Plugin.create :"mikutter-report-memory-usage" do
       end
     end
     activity :system, "mikutterのメモリ使用量: " + str
-    Reserver.new (UserConfig[:"report-memory-usage-interval"]) {
+    Reserver.new (UserConfig[:"report_memory_usage_interval"]) {
       report_memory_usage
     }
   end
 
   on_boot do |service|
-    UserConfig[:"report-memory-usage-interval"] ||= 600
+    UserConfig[:"report_memory_usage_interval"] ||= 600
     report_memory_usage
   end
 
   settings "メモリ使用量報告" do
     begin
-      adjustment("メモリ使用量報告間隔(sec)", :"report-memory-usage-interval", 1, 3600)
+      adjustment("メモリ使用量報告間隔(sec)", :"report_memory_usage_interval", 1, 3600)
     rescue => e
       puts e
       puts e.backtrace

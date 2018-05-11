@@ -1,5 +1,5 @@
 ---
-slug: :mikutter-report-memory-usage
+slug: :mikutter_report_memory_usage
 depends:
   mikutter: 3.4.6
   plugin:
